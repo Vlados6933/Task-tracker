@@ -44,6 +44,9 @@ namespace Task_tracker.Services
                 }
             }
 
+            todo.Status = Status.todo;
+            todo.CreatedAt = DateTime.Now;
+
             todos.Add(todo);
             SaveAll(todos);
         }
@@ -89,14 +92,9 @@ namespace Task_tracker.Services
             return true;
         }
 
-        public void PrintAll()
+        public List<TodoModel> GetData()
         {
-            var todos = LoadAll();
-
-            foreach (var item in todos)
-            {
-                Console.WriteLine($"ID: {item.Id}\nDescription: {item.Description}\nStatus: {item.Status}\nCreated at: {item.CreatedAt}\nUpdated at: {item.UpdatedAt}\n");
-            }
+            return LoadAll();
         }
     }
 }
